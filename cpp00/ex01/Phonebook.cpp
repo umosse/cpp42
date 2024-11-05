@@ -1,0 +1,130 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Phonebook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: umosse <umosse@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/05 12:24:03 by umosse            #+#    #+#             */
+/*   Updated: 2024/11/05 17:37:30 by umosse           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Phonebook.hpp"
+
+PhoneBook::PhoneBook() : _index(0), _totContact(0)
+{
+	std::cout << "PhoneBook constructor has been called" << std::endl;
+}
+
+PhoneBook::~PhoneBook()
+{
+	std::cout << "PhoneBook destructor has been called" << std::endl;
+}
+
+std::size_t	PhoneBook::getIndex()const
+{
+	return (_index);
+}
+
+void	PhoneBook::addContact(Contact	contact)
+{
+	if (_index > 7)
+		_index = 0;
+	array[_index] = contact;
+	_index++;
+	if (_totContact < 8)
+		_totContact++;
+}
+
+void	PhoneBook::createContact()
+{
+	std::cout << "Enter the new contact's first name" << std::endl;
+	std::string	firstName;
+	std::getline(std::cin, firstName);
+	while (firstName.empty())
+	{
+		std::cout << "Enter the new contact's first name" << std::endl;
+		std::getline(std::cin, firstName);
+	}
+	std::cout << "Enter the new contact's last name" << std::endl;
+	std::string	lastName;
+	std::getline(std::cin, lastName);
+	while (lastName.empty())
+	{
+		std::cout << "Enter the new contact's last name" << std::endl;
+		std::getline(std::cin, lastName);
+	}
+	std::cout << "Enter the new contact's nickname" << std::endl;
+	std::string	nickname;
+	std::getline(std::cin, nickname);
+	while (firstName.empty())
+	{
+		std::cout << "Enter the new contact's nickname" << std::endl;
+		std::getline(std::cin, nickname);
+	}
+	std::cout << "Enter the new contact's phone number" << std::endl;
+	std::string	phoneNumber;
+	std::getline(std::cin, phoneNumber);
+	while (firstName.empty())
+	{
+		std::cout << "Enter the new contact's phone number" << std::endl;
+		std::getline(std::cin, phoneNumber);
+	}
+	std::cout << "Enter the new contact's darkest secret" << std::endl;
+	std::string	darkestSecret;
+	std::getline(std::cin, darkestSecret);
+	while (firstName.empty())
+	{
+		std::cout << "Enter the new contact's darkest secret" << std::endl;
+		std::getline(std::cin, darkestSecret);
+	}
+	Contact	contact;
+	contact.setFirstName(firstName);
+	contact.setLastName(lastName);
+	contact.setNickname(nickname);
+	contact.setPhoneNumber(phoneNumber);
+	contact.setDarkestSecret(darkestSecret);
+	addContact(contact);
+}
+
+std::string	PhoneBook::truncate(std::string string)
+{
+	if (string.size() > 9)
+		return (string.substr(0, 9) + ".");
+	return (string);
+}
+
+void	PhoneBook::getContact()
+{
+	std::cout << std::setw(10) << "index" << std::setfill(' ');
+	std::cout << "|";
+	std::cout << std::setw(10) << "First Name" << std::setfill(' ');
+	std::cout << "|";
+	std::cout << std::setw(10) << "Last Name" << std::setfill(' ');
+	std::cout << "|";
+	std::cout << std::setw(10) << "Nickname" << std::setfill(' ') << std::endl;
+	for (std::size_t i = 0; i < _totContact; i++)
+	{
+		std::cout << std::setw(10) << i << std::setfill(' ');
+		std::cout << "|";
+		std::cout << std::setw(10) << truncate(array[i].getFirstName()) << std::setfill(' ');
+		std::cout << "|";
+		std::cout << std::setw(10) << truncate(array[i].getLastName()) << std::setfill(' ');
+		std::cout << "|";
+		std::cout << std::setw(10) << truncate(array[i].getNickname()) << std::setfill(' ') << std::endl;
+	}
+	std::cout << "Enter a contact's index" << std::endl;
+	std::string	cIndex;
+	std::getline(std::cin, cIndex);
+	while (strtoul(cIndex.c_str(), NULL, 10) >= _totContact)
+	{
+		std::cout << "Enter a contact's index" << std::endl;
+		std::getline(std::cin, cIndex);
+	}
+	std::cout << "Contact's first name : " << array[strtoul(cIndex.c_str(), NULL, 10)].getFirstName() << std::endl;
+	std::cout << "Contact's last name : " << array[strtoul(cIndex.c_str(), NULL, 10)].getLastName() << std::endl;
+	std::cout << "Contact's nickname : " << array[strtoul(cIndex.c_str(), NULL, 10)].getNickname() << std::endl;
+	std::cout << "Contact's phone number : " << array[strtoul(cIndex.c_str(), NULL, 10)].getPhoneNumber() << std::endl;
+	std::cout << "Contact's darkest secret : " << array[strtoul(cIndex.c_str(), NULL, 10)].getDarkestSecret() << std::endl;
+}
