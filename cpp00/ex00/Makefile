@@ -6,14 +6,14 @@
 #    By: umosse <umosse@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 12:07:07 by umosse            #+#    #+#              #
-#    Updated: 2024/11/05 12:16:06 by umosse           ###   ########.fr        #
+#    Updated: 2024/11/05 17:53:13 by umosse           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
 NAME = megaphone
 SRCS = megaphone.cpp
-OBJS = $(SRCS:.c=.o)
+OBJS = $(SRCS:.cpp=.o)
 CFLAGS = -Wall -Werror -Wextra -g3 -std=c++98
 RM = rm -f
 

@@ -6,14 +6,14 @@
 #    By: umosse <umosse@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/05 12:22:59 by umosse            #+#    #+#              #
-#    Updated: 2024/11/05 17:10:16 by umosse           ###   ########.fr        #
+#    Updated: 2024/11/05 17:53:09 by umosse           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
 NAME = PhoneBook
 SRCS = Contact.cpp main.cpp Phonebook.cpp
-OBJS = $(SRCS:.c=.o)
+OBJS = $(SRCS:.cpp=.o)
 CFLAGS = -Wall -Werror -Wextra -g3 -std=c++98
 RM = rm -f
 
