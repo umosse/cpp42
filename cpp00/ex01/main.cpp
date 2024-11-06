@@ -6,7 +6,7 @@
 /*   By: umosse <umosse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 14:47:11 by umosse            #+#    #+#             */
-/*   Updated: 2024/11/05 17:43:15 by umosse           ###   ########.fr       */
+/*   Updated: 2024/11/06 13:15:52 by umosse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	main(int argc, char **argv)
 		{
 			std::string	input;
 			std::getline(std::cin, input);
+			if (std::cin.eof())
+				break ;
 			if (input == "ADD")
 				phoneBook.createContact();
 			if (input == "SEARCH")
