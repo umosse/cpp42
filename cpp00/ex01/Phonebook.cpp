@@ -6,7 +6,7 @@
 /*   By: umosse <umosse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 12:24:03 by umosse            #+#    #+#             */
-/*   Updated: 2024/11/06 13:58:26 by umosse           ###   ########.fr       */
+/*   Updated: 2024/11/07 14:14:47 by umosse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,61 +43,61 @@ void	PhoneBook::createContact()
 	std::string	firstName;
 	std::getline(std::cin, firstName);
 	if (std::cin.eof())
-		exit(1);
+		return ;
 	while (firstName.empty())
 	{
 		std::cout << "Enter the new contact's first name" << std::endl;
 		std::getline(std::cin, firstName);
 		if (std::cin.eof())
-			exit(1);
+			return ;
 	}
 	std::cout << "Enter the new contact's last name" << std::endl;
 	std::string	lastName;
 	std::getline(std::cin, lastName);
 	if (std::cin.eof())
-		exit(1);
+		return ;
 	while (lastName.empty())
 	{
 		std::cout << "Enter the new contact's last name" << std::endl;
 		std::getline(std::cin, lastName);
 		if (std::cin.eof())
-			exit(1);
+			return ;
 	}
 	std::cout << "Enter the new contact's nickname" << std::endl;
 	std::string	nickname;
 	std::getline(std::cin, nickname);
 	if (std::cin.eof())
-		exit(1);
+		return ;
 	while (firstName.empty())
 	{
 		std::cout << "Enter the new contact's nickname" << std::endl;
 		std::getline(std::cin, nickname);
 		if (std::cin.eof())
-			exit(1);
+			return ;
 	}
 	std::cout << "Enter the new contact's phone number" << std::endl;
 	std::string	phoneNumber;
 	std::getline(std::cin, phoneNumber);
 	if (std::cin.eof())
-		exit(1);
+		return ;
 	while (firstName.empty())
 	{
 		std::cout << "Enter the new contact's phone number" << std::endl;
 		std::getline(std::cin, phoneNumber);
 		if (std::cin.eof())
-			exit(1);
+			return ;
 	}
 	std::cout << "Enter the new contact's darkest secret" << std::endl;
 	std::string	darkestSecret;
 	std::getline(std::cin, darkestSecret);
 	if (std::cin.eof())
-		exit(1);
+		return ;
 	while (firstName.empty())
 	{
 		std::cout << "Enter the new contact's darkest secret" << std::endl;
 		std::getline(std::cin, darkestSecret);
 		if (std::cin.eof())
-			exit(1);
+			return ;
 	}
 	Contact	contact;
 	contact.setFirstName(firstName);
@@ -141,13 +141,13 @@ void	PhoneBook::getContact()
 		std::string	cIndex;
 		std::getline(std::cin, cIndex);
 		if (std::cin.eof())
-			exit(1);
-		while (strtoul(cIndex.c_str(), NULL, 10) >= _totContact)
+			return ;
+		while (strtoul(cIndex.c_str(), NULL, 10) >= _totContact || cIndex.empty())
 		{
 			std::cout << "Enter a contact's index" << std::endl;
 			std::getline(std::cin, cIndex);
 			if (std::cin.eof())
-				exit(1);
+				return ;
 		}
 		std::cout << "Contact's first name : " << array[strtoul(cIndex.c_str(), NULL, 10)].getFirstName() << std::endl;
 		std::cout << "Contact's last name : " << array[strtoul(cIndex.c_str(), NULL, 10)].getLastName() << std::endl;

@@ -6,7 +6,7 @@
 /*   By: umosse <umosse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 16:17:07 by umosse            #+#    #+#             */
-/*   Updated: 2024/11/07 13:32:47 by umosse           ###   ########.fr       */
+/*   Updated: 2024/11/07 14:03:23 by umosse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	Account::_totalAmount = 0;
 int	Account::_totalNbDeposits = 0;
 int	Account::_totalNbWithdrawals = 0;
 
-Account::Account(int initial_deposit)
+Account::Account(int initial_deposit) : _accountIndex(0), _amount(0), _nbDeposits(0), _nbWithdrawals(0)
 {
 	_displayTimestamp();
 	_accountIndex = _nbAccounts;
@@ -82,7 +82,7 @@ bool	Account::makeWithdrawal(int withdrawal)
 		std::cout << "index:" << _accountIndex << ";p_amount:" << _amount;
 		_amount -= withdrawal;
 		_totalAmount -= withdrawal;
-		std::cout << ";deposit:" << withdrawal << ";amount:" << _amount << ";nb_deposits:" << _nbWithdrawals << std::endl;
+		std::cout << ";withdrawal:" << withdrawal << ";amount:" << _amount << ";nb_withdrawals:" << _nbWithdrawals << std::endl;
 		return (true);
 	}
 	else
@@ -108,6 +108,6 @@ void	Account::_displayTimestamp()
 {
 	std::time_t	time = std::time({});
 	char	timestring[42];
-	std::strftime(timestring, 42, "[%Y%m%d_%H%M%S]", std::localtime(&time));
+	std::strftime(timestring, 42, "[%Y%m%d_%H%M%S] ", std::localtime(&time));
 	std::cout << timestring;
 }
