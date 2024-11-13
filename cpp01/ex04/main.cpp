@@ -6,7 +6,7 @@
 /*   By: umosse <umosse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 13:16:42 by umosse            #+#    #+#             */
-/*   Updated: 2024/11/13 14:50:07 by umosse           ###   ########.fr       */
+/*   Updated: 2024/11/13 17:14:15 by umosse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ int	main(int argc, char **argv)
 		std::string		argv3 = argv[3];
 		FileName.open(argv1, std::ios::in);
 		if (!FileName)
-			std::cout << "Cannot open file" << std::endl;
+			std::cerr << "Cannot open file" << std::endl;
 		else
 		{
 			NewFileName.open(argv1 + ".replace", std::ios::out);
 			if (!NewFileName)
-				std::cout << "Error creating file" << std::endl;
+				std::cerr << "Error creating file" << std::endl;
 			else
 			{
 				std::cout << "File created" << std::endl;
@@ -47,7 +47,9 @@ int	main(int argc, char **argv)
 						offset = pos + argv3.size();
 						pos = str.find(argv2, offset);
 					}
-					NewFileName << str << std::endl;
+					NewFileName << str;
+					if (!NewFileName.eof())
+						NewFileName << std::endl;
 				}
 				NewFileName.close();
 			}
