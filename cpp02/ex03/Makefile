@@ -6,13 +6,13 @@
 #    By: umosse <umosse@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/18 15:28:21 by umosse            #+#    #+#              #
-#    Updated: 2024/11/19 16:16:41 by umosse           ###   ########.fr        #
+#    Updated: 2024/11/19 16:28:44 by umosse           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
 NAME = BSP
-SRCS = main.cpp Fixed.cpp
+SRCS = main.cpp Fixed.cpp Point.cpp bsp.cpp
 OBJS = $(SRCS:.cpp=.o)
 CFLAGS = -Wall -Werror -Wextra -g3 -std=c++98
 RM = rm -f
