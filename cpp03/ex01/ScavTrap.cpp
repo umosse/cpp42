@@ -6,7 +6,7 @@
 /*   By: umosse <umosse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:17:33 by umosse            #+#    #+#             */
-/*   Updated: 2024/11/25 16:33:06 by umosse           ###   ########.fr       */
+/*   Updated: 2024/11/25 16:39:35 by umosse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ ScavTrap::ScavTrap()
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name, 100, 50, 20)
 {
-	std::cout << _name << " default constructor called" << std::endl;
+	std::cout << _name << " inheritance constructor called" << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &other)
@@ -83,5 +83,5 @@ void	ScavTrap::guardGate()
 
 ScavTrap::~ScavTrap()
 {
-	std::cout << _name << " default destructor called, he had " << _hitPoints << " hitpoints left and " << _energyPoints << " energy points left" << std::endl;
+	std::cout << _name << " inheritance destructor called, he had " << _hitPoints << " hitpoints left and " << _energyPoints << " energy points left" << std::endl;
 }
