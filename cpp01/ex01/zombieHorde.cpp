@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umosse <umosse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 11:58:10 by umosse            #+#    #+#             */
-/*   Updated: 2024/11/12 16:49:26 by umosse           ###   ########.fr       */
+/*   Created: 2024/11/12 16:17:35 by umosse            #+#    #+#             */
+/*   Updated: 2024/11/12 16:47:07 by umosse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
+#include "Zombie.hpp"
 
-# define ZOMBIE_HPP
-
-# include <iostream>
-
-class Zombie {
-	public:
-		Zombie(std::string name);
-		~Zombie();
-		void	announce();
-	private:
-		std::string	_name;
-};
-
-Zombie*	newZombie(std::string name);
-void	randomChump(std::string name);
-
-
-
-#endif
+Zombie*	zombieHorde(int N, std::string name)
+{
+	if (N < 0)
+	{
+		std::cerr << N << ": Wrong amount of zombies in input" << std::endl;
+		return (NULL);
+	}
+	Zombie	*zombieHorde;
+	zombieHorde = new Zombie[N]();
+	for (int i = 0; i < N; i++)
+	{
+		zombieHorde[i].setName(name);
+		zombieHorde[i].announce();
+	}
+	return (zombieHorde);
+}

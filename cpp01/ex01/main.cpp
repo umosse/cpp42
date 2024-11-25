@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umosse <umosse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 11:58:10 by umosse            #+#    #+#             */
-/*   Updated: 2024/11/12 16:49:26 by umosse           ###   ########.fr       */
+/*   Created: 2024/11/12 16:17:12 by umosse            #+#    #+#             */
+/*   Updated: 2024/11/12 16:48:22 by umosse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
+#include "Zombie.hpp"
 
-# define ZOMBIE_HPP
-
-# include <iostream>
-
-class Zombie {
-	public:
-		Zombie(std::string name);
-		~Zombie();
-		void	announce();
-	private:
-		std::string	_name;
-};
-
-Zombie*	newZombie(std::string name);
-void	randomChump(std::string name);
-
-
-
-#endif
+int	main(void)
+{
+	Zombie	*zombies;
+	zombies = zombieHorde(21, "Volkan");
+	delete [] zombies;
+}

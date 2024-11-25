@@ -5,22 +5,22 @@
 #                                                     +:+ +:+         +:+      #
 #    By: umosse <umosse@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/11/18 15:28:21 by umosse            #+#    #+#              #
-#    Updated: 2024/11/25 13:05:30 by umosse           ###   ########.fr        #
+#    Created: 2024/11/12 16:50:52 by umosse            #+#    #+#              #
+#    Updated: 2024/11/12 16:51:21 by umosse           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CXX = c++
-NAME = BSP
-SRCS = main.cpp Fixed.cpp Point.cpp bsp.cpp
+CC = c++
+NAME = HiThisIsBrain
+SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
-CXXFLAGS = -Wall -Werror -Wextra -g3 -std=c++98
+CFLAGS = -Wall -Werror -Wextra -g3 -std=c++98
 RM = rm -f
 
 all: $(NAME)
 
 $(NAME): $(OBJS) 
-	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 clean:
 	$(RM) $(OBJS)
