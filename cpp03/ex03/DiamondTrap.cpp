@@ -6,7 +6,7 @@
 /*   By: umosse <umosse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 13:31:15 by umosse            #+#    #+#             */
-/*   Updated: 2024/11/26 14:08:44 by umosse           ###   ########.fr       */
+/*   Updated: 2024/11/26 16:30:45 by umosse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ DiamondTrap::DiamondTrap()
 	std::cout << "Default constructor called" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name, 100, 100, 30)
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + " clapName", 100, 50, 30), ScavTrap(name + " clapName", 100, 50, 30), FragTrap(name + " clapName", 100, 50, 30)
 {
+	_name = name;
 	std::cout << _name << " other inheritance constructor called" << std::endl;
 }
 
@@ -43,7 +44,7 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &other)
 
 void	DiamondTrap::whoAmI()
 {
-	std::cout << "DiamondTrap's name is : " << _name << " and its ClapTrap name is : " << name << std::endl;
+	std::cout << "DiamondTrap's name is : " << _name << " and its ClapTrap name is : " << ClapTrap::getName() << std::endl;
 }
 
 DiamondTrap::~DiamondTrap()

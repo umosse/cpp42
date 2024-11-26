@@ -6,7 +6,7 @@
 /*   By: umosse <umosse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:04:08 by umosse            #+#    #+#             */
-/*   Updated: 2024/11/25 16:32:48 by umosse           ###   ########.fr       */
+/*   Updated: 2024/11/26 16:27:22 by umosse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ ClapTrap::ClapTrap(std::string name, int hitPoints, int energyPoints, int attack
 	_hitPoints = hitPoints;
 	_energyPoints = energyPoints;
 	_attackDamage = attackDamage;
-	std::cout << _name << " default constructor called" << std::endl;
+	std::cout <<"ClapTrap default constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other)
@@ -86,7 +86,12 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		std::cout << "ClapTrap " << _name << " cannot perform more actions" << std::endl;
 }
 
+std::string	ClapTrap::getName()
+{
+	return (_name);
+}
+
 ClapTrap::~ClapTrap()
 {
-	std::cout << _name << " default destructor called, he had " << _hitPoints << " hitpoints left and " << _energyPoints << " energy points left" << std::endl;
+	std::cout << "ClapTrap default destructor called, he had " << _hitPoints << " hitpoints left and " << _energyPoints << " energy points left" << std::endl;
 }

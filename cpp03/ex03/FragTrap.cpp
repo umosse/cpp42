@@ -6,7 +6,7 @@
 /*   By: umosse <umosse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:37:53 by umosse            #+#    #+#             */
-/*   Updated: 2024/11/25 17:14:50 by umosse           ###   ########.fr       */
+/*   Updated: 2024/11/26 16:15:40 by umosse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,15 @@ FragTrap::FragTrap()
 FragTrap::FragTrap(std::string name) : ClapTrap(name, 100, 100, 30)
 {
 	std::cout << _name << " other inheritance constructor called" << std::endl;
+}
+
+FragTrap::FragTrap(std::string name, int hitPoints, int energyPoints, int attackDamage)
+{
+	_name = name;
+	_hitPoints = hitPoints;
+	_energyPoints = energyPoints;
+	_attackDamage = attackDamage;
+	std::cout << "FragTrap default constructor called" << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap &other)
@@ -48,5 +57,5 @@ void	FragTrap::highFivesGuys()
 
 FragTrap::~FragTrap()
 {
-	std::cout << _name << " other inheritance destructor called, he had " << _hitPoints << " hitpoints left and " << _energyPoints << " energy points left" << std::endl;
+	std::cout << "FragTrap other inheritance destructor called, he had " << _hitPoints << " hitpoints left and " << _energyPoints << " energy points left" << std::endl;
 }
