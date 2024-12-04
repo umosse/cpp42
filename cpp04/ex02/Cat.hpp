@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umosse <umosse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/02 15:41:36 by umosse            #+#    #+#             */
-/*   Updated: 2024/12/03 14:16:30 by umosse           ###   ########.fr       */
+/*   Created: 2024/12/03 13:31:30 by umosse            #+#    #+#             */
+/*   Updated: 2024/12/03 17:52:08 by umosse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
+#include "Dog.hpp"
 
-# define ANIMAL_HPP
-
-# include <iostream>
-
-class Animal {
+class Cat : public Animal{
 	public:
-		Animal();
-		Animal(std::string _name);
-		Animal(const Animal &other);
-		virtual ~Animal();
-		Animal&	operator=(const Animal &other);
-		void	virtual makeSound()const ;
-		std::string	getType()const ;
+		Cat();
+		Cat(std::string _name);
+		Cat(const Cat &other);
+		~Cat();
+		Cat&	operator=(const Cat &other);
+		void	makeSound()const;
+		void	printIdea();
+		void	setIdea(const std::string &idea);
 	private:
-	protected:
-		std::string	_type;
+		Brain	*_brain;
 };
-
-#endif

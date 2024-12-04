@@ -6,13 +6,13 @@
 #    By: umosse <umosse@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/02 15:38:50 by umosse            #+#    #+#              #
-#    Updated: 2024/12/03 14:10:23 by umosse           ###   ########.fr        #
+#    Updated: 2024/12/04 14:30:29 by umosse           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
-NAME = Polymorphism
-SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
+NAME = Abstract
+SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp
 OBJS = $(SRCS:.cpp=.o)
 CXXFLAGS = -Wall -Werror -Wextra -g3 -std=c++98
 RM = rm -f

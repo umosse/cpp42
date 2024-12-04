@@ -6,7 +6,7 @@
 /*   By: umosse <umosse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 15:41:44 by umosse            #+#    #+#             */
-/*   Updated: 2024/12/03 14:17:00 by umosse           ###   ########.fr       */
+/*   Updated: 2024/12/04 14:28:23 by umosse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ Animal &Animal::operator=(const Animal &other)
 	return (*this);
 }
 
-void	Animal::makeSound()const
-{
-	std::cout << _type << "*Default animal noise*" << std::endl;
-}
+// void	Animal::makeSound()const
+// {
+// 	std::cout << _type << "*Default animal noise*" << std::endl;
+// }
 
 std::string	Animal::getType()const
 {

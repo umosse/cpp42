@@ -6,7 +6,7 @@
 /*   By: umosse <umosse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 15:39:47 by umosse            #+#    #+#             */
-/*   Updated: 2024/12/04 14:15:57 by umosse           ###   ########.fr       */
+/*   Updated: 2024/12/04 14:28:43 by umosse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int main()
 {
+	// const Animal animal = new Animal();
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
 	Animal	*animals[100];

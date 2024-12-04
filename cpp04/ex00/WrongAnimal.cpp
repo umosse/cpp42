@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umosse <umosse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/02 15:41:44 by umosse            #+#    #+#             */
-/*   Updated: 2024/12/03 14:17:00 by umosse           ###   ########.fr       */
+/*   Created: 2024/12/03 14:08:26 by umosse            #+#    #+#             */
+/*   Updated: 2024/12/03 14:17:33 by umosse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
-Animal::Animal()
+WrongAnimal::WrongAnimal()
 {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Animal::Animal(std::string name)
+WrongAnimal::WrongAnimal(std::string name)
 {
 	_type = name;
 	std::cout << _type << " default constructor called" << std::endl;
 }
 
-Animal::Animal(const Animal &other)
+WrongAnimal::WrongAnimal(const WrongAnimal &other)
 {
 	*this = other;
 	std::cout << "Copy constructor called" << std::endl;
 }
 
-Animal &Animal::operator=(const Animal &other)
+WrongAnimal &WrongAnimal::operator=(const WrongAnimal &other)
 {
 	if (this != &other)
 	{
@@ -39,17 +39,17 @@ Animal &Animal::operator=(const Animal &other)
 	return (*this);
 }
 
-void	Animal::makeSound()const
+void	WrongAnimal::makeSound()const
 {
-	std::cout << _type << "*Default animal noise*" << std::endl;
+	std::cout << _type << "*Default wrong animal noise*" << std::endl;
 }
 
-std::string	Animal::getType()const
+std::string	WrongAnimal::getType()const
 {
 	return (_type);
 }
 
-Animal::~Animal()
+WrongAnimal::~WrongAnimal()
 {
-	std::cout << "Default destructor called" << std::endl;
+	std::cout << "Default wrong destructor called" << std::endl;
 }

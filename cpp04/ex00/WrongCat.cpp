@@ -1,68 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umosse <umosse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/02 15:40:44 by umosse            #+#    #+#             */
-/*   Updated: 2024/12/04 14:10:36 by umosse           ###   ########.fr       */
+/*   Created: 2024/12/03 14:10:01 by umosse            #+#    #+#             */
+/*   Updated: 2024/12/03 14:10:02 by umosse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "WrongCat.hpp"
 
-Cat::Cat() : Animal()
+WrongCat::WrongCat()
 {
-	_type = "Cat";
-	_brain = new Brain();
-	std::cout << "Cat default constructor called" << std::endl;
+	_type = "WrongCat";
+	std::cout << "Wrong cat default constructor called" << std::endl;
 }
 
-Cat::Cat(std::string type) : Animal(type)
+WrongCat::WrongCat(std::string type) : WrongAnimal(type)
 {
-	_type = "Cat";
-	_brain = new Brain();
+	_type = "WrongCat";
 	std::cout << _type << " other inheritance constructor called" << std::endl;
 }
 
-Cat::Cat(const Cat &other)
+WrongCat::WrongCat(const WrongCat &other)
 {
-	_type = other._type;
-	_brain = new Brain(*other._brain);
+	*this = other;
 	std::cout << "Copy constructor called" << std::endl;
 }
 
-Cat &Cat::operator=(const Cat &other)
+WrongCat &WrongCat::operator=(const WrongCat &other)
 {
 	if (this != &other)
-	{
-		Animal::operator=(other);
-		delete _brain;
-		_brain = new Brain(*other._brain);
 		_type = other._type;
-	}
 	std::cout << "Assignment operator called" << std::endl;
 	return (*this);
 }
 
-void	Cat::makeSound()const
+void	WrongCat::makeSound()const
 {
 	std::cout << _type << " : Meow" << std::endl;
 }
 
-void	Cat::printIdea()
+WrongCat::~WrongCat()
 {
-	_brain->printIdea();
-}
-
-void	Cat::setIdea(const std::string &idea)
-{
-	_brain->setIdea(idea);
-}
-
-Cat::~Cat()
-{
-	delete _brain;
 	std::cout << _type << " other inheritance destructor called" << std::endl;
 }

@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AMateria.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umosse <umosse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/02 15:41:36 by umosse            #+#    #+#             */
-/*   Updated: 2024/12/03 14:16:30 by umosse           ###   ########.fr       */
+/*   Created: 2024/12/04 14:31:31 by umosse            #+#    #+#             */
+/*   Updated: 2024/12/04 14:46:32 by umosse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
+#ifndef AMATERIA_HPP
 
-# define ANIMAL_HPP
+# define AMATERIA_HPP
 
 # include <iostream>
 
-class Animal {
+class AMateria {
 	public:
-		Animal();
-		Animal(std::string _name);
-		Animal(const Animal &other);
-		virtual ~Animal();
-		Animal&	operator=(const Animal &other);
-		void	virtual makeSound()const ;
-		std::string	getType()const ;
+		AMateria();
+		AMateria(std::string _name);
+		AMateria(const AMateria &other);
+		virtual ~AMateria();
+		AMateria&	operator=(const AMateria &other);
 	private:
 	protected:
-		std::string	_type;
 };
 
 #endif

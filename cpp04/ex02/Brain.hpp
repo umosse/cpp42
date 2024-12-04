@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umosse <umosse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/02 15:41:36 by umosse            #+#    #+#             */
-/*   Updated: 2024/12/03 14:16:30 by umosse           ###   ########.fr       */
+/*   Created: 2024/12/03 15:43:04 by umosse            #+#    #+#             */
+/*   Updated: 2024/12/03 17:43:06 by umosse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
+#include <iostream>
 
-# define ANIMAL_HPP
-
-# include <iostream>
-
-class Animal {
+class Brain{
 	public:
-		Animal();
-		Animal(std::string _name);
-		Animal(const Animal &other);
-		virtual ~Animal();
-		Animal&	operator=(const Animal &other);
-		void	virtual makeSound()const ;
-		std::string	getType()const ;
+		Brain();
+		Brain(std::string _name);
+		Brain(const Brain &other);
+		~Brain();
+		Brain&	operator=(const Brain &other);
+		void	setIdea(const std::string idea);
+		void	printIdea()const;
 	private:
-	protected:
-		std::string	_type;
+		std::string	_ideas[100];
 };
-
-#endif
