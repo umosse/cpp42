@@ -6,23 +6,28 @@
 /*   By: umosse <umosse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 14:31:31 by umosse            #+#    #+#             */
-/*   Updated: 2024/12/04 14:46:32 by umosse           ###   ########.fr       */
+/*   Updated: 2024/12/05 16:41:30 by umosse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AMATERIA_HPP
+#ifndef ICHARACTER_HPP
 
-# define AMATERIA_HPP
+# define ICARACTER_HPP
 
-# include <iostream>
+#include <iostream>
+
+class ICharacter;
 
 class AMateria {
 	public:
 		AMateria();
-		AMateria(std::string _name);
+		AMateria(std::string const & _type);
 		AMateria(const AMateria &other);
 		virtual ~AMateria();
 		AMateria&	operator=(const AMateria &other);
+		std::string	const	&getType()const;
+		virtual	AMateria*	clone()const = 0;
+		virtual	void	use(ICharacter& target);
 	private:
 	protected:
 };
