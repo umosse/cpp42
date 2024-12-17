@@ -1,56 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: umosse <umosse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 14:31:43 by umosse            #+#    #+#             */
-/*   Updated: 2024/12/17 16:46:19 by umosse           ###   ########.fr       */
+/*   Created: 2024/12/17 10:45:32 by umosse            #+#    #+#             */
+/*   Updated: 2024/12/17 17:16:53 by umosse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AMateria.hpp"
+#include "Ice.hpp"
+#include "ICharacter.hpp"
 
-AMateria::AMateria()
+Ice::Ice() : AMateria("ice")
 {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-AMateria::AMateria(std::string const & name)
-{
-	_type = name;
-	std::cout << _type << " default constructor called" << std::endl;
-}
-
-AMateria::AMateria(const AMateria &other)
+Ice::Ice(const Ice &other)
 {
 	*this = other;
 	std::cout << "Copy constructor called" << std::endl;
 }
 
-AMateria &AMateria::operator=(const AMateria &other)
+Ice &Ice::operator=(const Ice &other)
 {
 	if (this != &other)
 	{
-		_type = other._type;
+		AMateria::operator=(other);
 	}
 	std::cout << "Assignment operator called" << std::endl;
 	return (*this);
 }
 
-std::string	const &AMateria::getType()const
+AMateria	*Ice::clone()const
 {
-	return (_type);
+	return (new Ice());
 }
 
-void	AMateria::use(ICharacter& target)
+void	Ice::use(ICharacter& target)
 {
-	(void)target;
-	std::cout << "How did you get here?" << std::endl;
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }
 
-AMateria::~AMateria()
+Ice::~Ice()
 {
 	std::cout << "Default destructor called" << std::endl;
 }

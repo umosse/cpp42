@@ -6,13 +6,13 @@
 /*   By: umosse <umosse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 14:31:31 by umosse            #+#    #+#             */
-/*   Updated: 2024/12/05 16:41:30 by umosse           ###   ########.fr       */
+/*   Updated: 2024/12/17 16:44:47 by umosse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICHARACTER_HPP
 
-# define ICARACTER_HPP
+# define ICHARACTER_HPP
 
 #include <iostream>
 
@@ -30,6 +30,7 @@ class AMateria {
 		virtual	void	use(ICharacter& target);
 	private:
 	protected:
+		std::string	_type;
 };
 
 #endif

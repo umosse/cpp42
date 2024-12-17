@@ -6,13 +6,13 @@
 #    By: umosse <umosse@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/04 14:30:15 by umosse            #+#    #+#              #
-#    Updated: 2024/12/04 14:31:52 by umosse           ###   ########.fr        #
+#    Updated: 2024/12/17 16:37:10 by umosse           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
 NAME = Interface
-SRCS = main.cpp AMateria.cpp
+SRCS = main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp
 OBJS = $(SRCS:.cpp=.o)
 CXXFLAGS = -Wall -Werror -Wextra -g3 -std=c++98
 RM = rm -f
