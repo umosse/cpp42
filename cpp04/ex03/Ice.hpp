@@ -12,3 +12,12 @@
 
 #include "AMateria.hpp"
 
+class Ice : public AMateria{
+	public:
+		Ice();
+		Ice(std::string _name);
+		Ice(const Ice &other);
+		~Ice();
+		Ice&	operator=(const Ice &other);
+	private:
+};
