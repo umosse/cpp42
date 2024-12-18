@@ -6,7 +6,7 @@
 /*   By: umosse <umosse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 11:44:05 by umosse            #+#    #+#             */
-/*   Updated: 2024/12/17 17:14:53 by umosse           ###   ########.fr       */
+/*   Updated: 2024/12/18 16:48:26 by umosse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,23 @@ Character::Character(std::string name)
 
 Character::Character(const Character &other)
 {
-	*this = other;
+	_name = other._name;
+	_index = other._index;
+	_floorIndex = other._floorIndex;
+	for (int i = 0; i < 4; i++)
+	{
+		if (other._inventory[i])
+			_inventory[i] = other._inventory[i]->clone();
+		else
+			_inventory[i] = NULL;
+	}
+	for (int i = 0; i < 40; i++)
+	{
+		if (other._floor[i])
+			_floor[i] = other._floor[i]->clone();
+		else
+			_floor[i] = NULL;
+	}
 	std::cout << "Copy constructor called" << std::endl;
 }
 
@@ -51,7 +67,10 @@ Character &Character::operator=(const Character &other)
 		for (int i = 0; i < 4; i++)
 		{
 			if (_inventory[i])
+			{
 				delete _inventory[i];
+				_inventory[i] = NULL;
+			}
 			if (other._inventory[i])
 				_inventory[i] = other._inventory[i]->clone();
 			else
@@ -60,7 +79,10 @@ Character &Character::operator=(const Character &other)
 		for (int i = 0; i < 40; i++)
 		{
 			if (_floor[i])
+			{
 				delete _floor[i];
+				_floor[i] = NULL;
+			}
 			if (other._floor[i])
 				_floor[i] = other._floor[i]->clone();
 			else
@@ -97,13 +119,16 @@ void	Character::unequip(int idx)
 	if (_inventory[idx] != NULL && _floorIndex < 40)
 	{
 		_floor[_floorIndex] = _inventory[idx];
+		_inventory[idx] = NULL;
 		_floorIndex++;
 	}
 }
 
 void	Character::use(int idx, ICharacter& target)
 {
-	if (_inventory[idx] == NULL || idx > 3 || idx < 0)
+	if (idx > 3 || idx < 0)
+		return ;
+	if (_inventory[idx] == NULL)
 		return ;
 	_inventory[idx]->use(target);
 }
@@ -114,6 +139,13 @@ Character::~Character()
 	{
 		if (_inventory[i])
 		{
+			for (int y = 0; y < 40; y++)
+			{
+				if (_floor[y] == _inventory[i])
+				{
+					_floor[y] = NULL;
+				}
+			}
 			delete _inventory[i];
 			_inventory[i] = NULL;
 		}
