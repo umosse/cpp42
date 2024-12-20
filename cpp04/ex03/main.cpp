@@ -6,7 +6,7 @@
 /*   By: umosse <umosse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 14:31:15 by umosse            #+#    #+#             */
-/*   Updated: 2024/12/18 17:27:04 by umosse           ###   ########.fr       */
+/*   Updated: 2024/12/20 11:55:06 by umosse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,41 +37,42 @@
 // 	return 0;
 // }
 
-int main() {
+int	main()
+{
 
-    IMateriaSource *source = new MateriaSource();
-    source->learnMateria(new Ice());
-    source->learnMateria(new Cure());
+	IMateriaSource *source = new MateriaSource();
+	source->learnMateria(new Ice());
+	source->learnMateria(new Cure());
 
-    IMateriaSource *secondarySource = new MateriaSource();
-    secondarySource->learnMateria(new Ice());
-    secondarySource->learnMateria(new Cure());
+	IMateriaSource *secondarySource = new MateriaSource();
+	secondarySource->learnMateria(new Ice());
+	secondarySource->learnMateria(new Cure());
 
-    ICharacter *cloud = new Character("Cloud");
-    ICharacter *tifa = new Character("Tifa");
+	ICharacter *cloud = new Character("Cloud");
+	ICharacter *tifa = new Character("Tifa");
 
-    AMateria *tmp;
-    tmp = secondarySource->createMateria("ice");
-    cloud->equip(tmp);
-    tmp = secondarySource->createMateria("fire");
-    cloud->equip(tmp);
-    tmp = secondarySource->createMateria("cure");
-    cloud->equip(tmp);
-    tmp = secondarySource->createMateria("lightning");
-    cloud->equip(tmp);
+	AMateria *tmp;
+	tmp = secondarySource->createMateria("ice");
+	cloud->equip(tmp);
+	tmp = secondarySource->createMateria("fire");
+	cloud->equip(tmp);
+	tmp = secondarySource->createMateria("cure");
+	cloud->equip(tmp);
+	tmp = secondarySource->createMateria("lightning");
+	cloud->equip(tmp);
 
-    for (int i = 0; i < 4; i++) {
-        cloud->use(i, *tifa);
-    }
+	for (int i = 0; i < 4; i++) {
+		cloud->use(i, *tifa);
+	}
 
-    cloud->equip(tmp);
+	cloud->equip(tmp);
 
-    cloud->use(-42, *tifa);
-    cloud->use(42, *tifa);
-    cloud->use(4, *tifa);
+	cloud->use(-42, *tifa);
+	cloud->use(42, *tifa);
+	cloud->use(4, *tifa);
 
-    ICharacter *cloudCopy = new Character(*dynamic_cast<Character *>(cloud));
-    Character *c = new Character(*dynamic_cast<Character *>(cloud));
+	ICharacter *cloudCopy = new Character(*dynamic_cast<Character *>(cloud));
+	Character *c = new Character(*dynamic_cast<Character *>(cloud));
 	Character copy;
 
 	copy = *c;
@@ -82,25 +83,25 @@ int main() {
 
 	delete c;
 
-    cloudCopy->use(0, *tifa);
-    cloudCopy->use(1, *tifa);
-    cloudCopy->unequip(0);
+	cloudCopy->use(0, *tifa);
+	cloudCopy->use(1, *tifa);
+	cloudCopy->unequip(0);
 
-    cloud->unequip(0);
-    cloud->use(0, *tifa);
+	cloud->unequip(0);
+	cloud->use(0, *tifa);
 
-    cloud->unequip(0);
-    cloud->unequip(-42);
-    cloud->unequip(42);
-    cloud->unequip(4);
+	cloud->unequip(0);
+	cloud->unequip(-42);
+	cloud->unequip(42);
+	cloud->unequip(4);
 
-    cloud->use(0, *tifa);
+	cloud->use(0, *tifa);
 
-    delete cloud;
-    delete cloudCopy;
-    delete source;
-    delete secondarySource;
+	delete cloud;
+	delete cloudCopy;
+	delete source;
+	delete secondarySource;
 	delete tifa;
 
-    return 0;
+	return 0;
 }
