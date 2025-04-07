@@ -50,22 +50,22 @@ int	Bureaucrat::getGrade()const
 
 Bureaucrat::GradeTooHighException::GradeTooHighException()
 {
-	std::cout << "Too high constructor called" << std::endl;
+	std::cout << "other Default constructor called" << std::endl;
 }
 
 Bureaucrat::GradeTooLowException::GradeTooLowException()
 {
-	std::cout << "Too low constructor called" << std::endl;
+	std::cout << "Default constructor called" << std::endl;
 }
 
 const char * Bureaucrat::GradeTooHighException:: what() const throw()
 {
-	return ("The grade is too high");
+	return ("Too high");
 }
 
 const char * Bureaucrat::GradeTooLowException:: what() const throw()
 {
-	return ("The grade is too low");
+	return ("Too low");
 }
 
 Bureaucrat::~Bureaucrat()
