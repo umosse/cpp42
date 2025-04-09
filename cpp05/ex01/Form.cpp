@@ -1,11 +1,12 @@
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 Form::Form()
 {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Form::Form(std::string const & name, int signGrade, int execGrade)
+Form::Form(std::string const & name, int signGrade, int execGrade): _signed(false)
 {
 	_name = name;
 	_signGrade = signGrade;
@@ -35,7 +36,7 @@ Form &Form::operator=(const Form &other)
 
 std::ostream &operator<<(std::ostream &oss, const Form &Form)
 {
-	oss << Form.getName() << ", Form grade " << Form.getGrade();
+	oss << Form.getName() << ", form grade to sign " << Form.getSignGrade() << ", form grade to execute " << Form.getExecGrade();
 	return (oss);
 }
 
@@ -61,12 +62,34 @@ bool	Form::getSigned()const
 
 Form::GradeTooHighException::GradeTooHighException()
 {
-	std::cout << "Too high constructor called" << std::endl;
 }
 
 Form::GradeTooLowException::GradeTooLowException()
 {
-	std::cout << "Too low constructor called" << std::endl;
+	_message = "The grade is too low\n";
+}
+
+Form::GradeTooLowException::~GradeTooLowException() throw()
+{
+}
+
+Form::GradeTooLowException::GradeTooLowException(const std::string& message)
+{
+	_message = message;
+}
+
+void	Form::beSigned(Bureaucrat &bureaucrat)
+{
+	if (bureaucrat.getGrade() <= _signGrade)
+	{
+		_signed = true;
+		std::cout << bureaucrat.getName() << " signed " << _name << "\n";
+	}
+	else
+	{
+		GradeTooLowException	Low(bureaucrat.getName() + " couldn't sign " + _name + " because the bureacrat's grade was too low.\n");
+		throw (Low);
+	}
 }
 
 const char * Form::GradeTooHighException:: what() const throw()
@@ -76,7 +99,7 @@ const char * Form::GradeTooHighException:: what() const throw()
 
 const char * Form::GradeTooLowException:: what() const throw()
 {
-	return ("The grade is too low");
+	return (_message.c_str());
 }
 
 Form::~Form()
