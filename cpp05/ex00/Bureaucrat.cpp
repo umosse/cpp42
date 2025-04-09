@@ -50,7 +50,7 @@ int	Bureaucrat::getGrade()const
 
 void	Bureaucrat::incrGrade()
 {
-	_grade++;
+	_grade--;
 	if (_grade < 1)
 	{
 		GradeTooLowException	Low;
@@ -65,7 +65,7 @@ void	Bureaucrat::incrGrade()
 
 void	Bureaucrat::decrGrade()
 {
-	_grade--;
+	_grade++;
 	if (_grade < 1)
 	{
 		GradeTooLowException	Low;
