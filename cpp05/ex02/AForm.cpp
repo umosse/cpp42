@@ -1,12 +1,12 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-Form::Form()
+AForm::AForm()
 {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Form::Form(std::string const & name, int signGrade, int execGrade): _signed(false)
+AForm::AForm(std::string const & name, int signGrade, int execGrade): _signed(false)
 {
 	_name = name;
 	_signGrade = signGrade;
@@ -24,7 +24,7 @@ Form::Form(std::string const & name, int signGrade, int execGrade): _signed(fals
 	std::cout << _name << " default constructor called" << std::endl;
 }
 
-Form &Form::operator=(const Form &other)
+AForm &AForm::operator=(const AForm &other)
 {
 	if (this != &other)
 	{
@@ -34,51 +34,56 @@ Form &Form::operator=(const Form &other)
 	return (*this);
 }
 
-std::ostream &operator<<(std::ostream &oss, const Form &Form)
+std::ostream &operator<<(std::ostream &oss, const AForm &AForm)
 {
-	oss << Form.getName() << ", form grade to sign " << Form.getSignGrade() << ", form grade to execute " << Form.getExecGrade();
+	oss << AForm.getName() << ", Aform grade to sign " << AForm.getSignGrade() << ", Aform grade to execute " << AForm.getExecGrade();
 	return (oss);
 }
 
-std::string	const &Form::getName()const
+std::string	const &AForm::getName()const
 {
 	return (_name);
 }
 
-int	Form::getSignGrade()const
+void	AForm::setName(const std::string &name)
+{
+	_name = name;
+}
+
+int	AForm::getSignGrade()const
 {
 	return (_signGrade);
 }
 
-int	Form::getExecGrade()const
+int	AForm::getExecGrade()const
 {
 	return (_execGrade);
 }
 
-bool	Form::getSigned()const
+bool	AForm::getSigned()const
 {
 	return (_signed);
 }
 
-Form::GradeTooHighException::GradeTooHighException()
+AForm::GradeTooHighException::GradeTooHighException()
 {
 }
 
-Form::GradeTooLowException::GradeTooLowException()
+AForm::GradeTooLowException::GradeTooLowException()
 {
 	_message = "The grade is too low";
 }
 
-Form::GradeTooLowException::~GradeTooLowException() throw()
+AForm::GradeTooLowException::~GradeTooLowException() throw()
 {
 }
 
-Form::GradeTooLowException::GradeTooLowException(const std::string& message)
+AForm::GradeTooLowException::GradeTooLowException(const std::string& message)
 {
 	_message = message;
 }
 
-void	Form::beSigned(Bureaucrat &bureaucrat)
+void	AForm::beSigned(Bureaucrat &bureaucrat)
 {
 	if (bureaucrat.getGrade() <= _signGrade)
 	{
@@ -92,17 +97,17 @@ void	Form::beSigned(Bureaucrat &bureaucrat)
 	}
 }
 
-const char * Form::GradeTooHighException:: what() const throw()
+const char * AForm::GradeTooHighException:: what() const throw()
 {
 	return ("The grade is too high");
 }
 
-const char * Form::GradeTooLowException:: what() const throw()
+const char * AForm::GradeTooLowException:: what() const throw()
 {
 	return (_message.c_str());
 }
 
-Form::~Form()
+AForm::~AForm()
 {
 	std::cout << "Default destructor called" << std::endl;
 }

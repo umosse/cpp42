@@ -78,7 +78,7 @@ void	Bureaucrat::decrGrade()
 	}
 }
 
-void	Bureaucrat::signForm(Form &form)
+void	Bureaucrat::signForm(AForm &form)
 {
 	form.beSigned(*this);
 }
