@@ -83,6 +83,10 @@ AForm::GradeTooLowException::GradeTooLowException(const std::string& message)
 	_message = message;
 }
 
+AForm::FormNotSignedException::FormNotSignedException()
+{
+}
+
 void	AForm::beSigned(Bureaucrat &bureaucrat)
 {
 	if (bureaucrat.getGrade() <= _signGrade)
@@ -105,6 +109,11 @@ const char * AForm::GradeTooHighException:: what() const throw()
 const char * AForm::GradeTooLowException:: what() const throw()
 {
 	return (_message.c_str());
+}
+
+const char * AForm::FormNotSignedException:: what() const throw()
+{
+	return ("Form was not signed");
 }
 
 AForm::~AForm()

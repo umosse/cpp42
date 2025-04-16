@@ -93,6 +93,11 @@ Bureaucrat::GradeTooLowException::GradeTooLowException()
 	std::cout << "Grade too low constructor called" << std::endl;
 }
 
+Bureaucrat::FormNotSignedException::FormNotSignedException()
+{
+	std::cout << "Form not signed constructor called" << std::endl;
+}
+
 const char * Bureaucrat::GradeTooHighException:: what() const throw()
 {
 	return ("Grade is too high");
@@ -101,6 +106,11 @@ const char * Bureaucrat::GradeTooHighException:: what() const throw()
 const char * Bureaucrat::GradeTooLowException:: what() const throw()
 {
 	return ("Grade is too low");
+}
+
+const char * Bureaucrat::FormNotSignedException:: what() const throw()
+{
+	return ("Form was not signed");
 }
 
 Bureaucrat::~Bureaucrat()

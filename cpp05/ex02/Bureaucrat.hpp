@@ -28,6 +28,11 @@ class Bureaucrat {
 			GradeTooLowException();
 			virtual const char * what() const throw();
 		};
+		class FormNotSignedException : public std::exception {
+			public:
+			FormNotSignedException();
+			virtual const char * what() const throw();
+		};
 		private:
 		std::string	_name;
 		int			_grade;
