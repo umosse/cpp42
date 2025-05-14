@@ -45,7 +45,7 @@ class AForm {
 		int			_signGrade;
 		int			_execGrade;
 	};
-	
+
 std::ostream &operator<<(std::ostream &oss, const AForm &form);
 
 #endif
