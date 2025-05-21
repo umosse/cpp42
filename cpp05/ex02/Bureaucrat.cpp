@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat()
 {
@@ -81,6 +82,11 @@ void	Bureaucrat::decrGrade()
 void	Bureaucrat::signForm(AForm &form)
 {
 	form.beSigned(*this);
+}
+
+void	Bureaucrat::executeForm(AForm const & form)
+{
+	form.execute(*this);
 }
 
 Bureaucrat::GradeTooHighException::GradeTooHighException()

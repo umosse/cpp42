@@ -8,11 +8,11 @@
 class ShruberryCreationForm : public AForm {
 	public:
 		ShruberryCreationForm();
-		ShruberryCreationForm(const std::string &target);
+		ShruberryCreationForm(const std::string &target, std::string const & _name, int _signGrade, int _execGrade);
 		ShruberryCreationForm(const ShruberryCreationForm &other);
 		~ShruberryCreationForm();
 		ShruberryCreationForm&	operator=(const ShruberryCreationForm &other);
-		void	execute(Bureaucrat const & executor);
+		void	execute(Bureaucrat const & executor) const;
 		std::string	getTarget()const;
 	private:
 		std::string	_target;

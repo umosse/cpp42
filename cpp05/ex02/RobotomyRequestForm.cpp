@@ -1,13 +1,15 @@
 #include "RobotomyRequestForm.hpp"
 #include "AForm.hpp"
+#include <cstdlib>
 
-RobotomyRequestForm::RobotomyRequestForm()
+RobotomyRequestForm::RobotomyRequestForm(): AForm()
 {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string &target)
+RobotomyRequestForm::RobotomyRequestForm(const std::string &target, std::string const & _name, int _signGrade, int _execGrade): AForm(_name, _signGrade, _execGrade)
 {
+	_target = target;
 	std::cout << getName() << " default constructor called" << std::endl;
 }
 
@@ -21,7 +23,12 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &o
 	return (*this);
 }
 
-void	RobotomyRequestForm::execute(Bureaucrat const & executor)
+std::string	RobotomyRequestForm::getTarget() const
+{
+	return (_target);
+}
+
+void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
 	if (!getSigned())
 	{
@@ -35,7 +42,7 @@ void	RobotomyRequestForm::execute(Bureaucrat const & executor)
 	}
 	std::cout << "Brrrrrrrrrrrrrrrrrrrrrrrrrrrvvvvvvvvvvvrrrrrrr\n";
 
-	const int	randomNum = std::rand();
+	int	randomNum = std::rand();
 	if (randomNum % 2)
 	{
 		std::cout << _target << " has been robotomized successfully\n";

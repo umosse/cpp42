@@ -1,7 +1,7 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-AForm::AForm()
+AForm::AForm(): _name("default"), _signed(false), _signGrade(150), _execGrade(150)
 {
 	std::cout << "Default constructor called" << std::endl;
 }
@@ -118,5 +118,5 @@ const char * AForm::FormNotSignedException:: what() const throw()
 
 AForm::~AForm()
 {
-	std::cout << "Default destructor called" << std::endl;
+	std::cout << "AForm destructor called" << std::endl;
 }

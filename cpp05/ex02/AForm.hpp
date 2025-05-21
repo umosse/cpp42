@@ -11,7 +11,7 @@ class AForm {
 		AForm();
 		AForm(std::string const & _name, int _signGrade, int _execGrade);
 		AForm(const AForm &other);
-		~AForm();
+		virtual ~AForm();
 		std::string	const	&getName()const;
 		bool	getSigned() const;
 		void	setName(const std::string &name);

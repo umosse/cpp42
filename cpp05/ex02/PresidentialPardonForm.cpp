@@ -1,13 +1,14 @@
 #include "PresidentialPardonForm.hpp"
 #include "AForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm()
+PresidentialPardonForm::PresidentialPardonForm(): AForm()
 {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string &target)
+PresidentialPardonForm::PresidentialPardonForm(const std::string &target, std::string const & _name, int _signGrade, int _execGrade): AForm(_name, _signGrade, _execGrade)
 {
+	_target = target;
 	std::cout << getName() << " default constructor called" << std::endl;
 }
 
@@ -21,7 +22,12 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 	return (*this);
 }
 
-void	PresidentialPardonForm::execute(Bureaucrat const & executor)
+std::string	PresidentialPardonForm::getTarget() const
+{
+	return (_target);
+}
+
+void	PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
 	if (!getSigned())
 	{

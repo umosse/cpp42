@@ -2,13 +2,14 @@
 #include "AForm.hpp"
 #include <fstream>
 
-ShruberryCreationForm::ShruberryCreationForm()
+ShruberryCreationForm::ShruberryCreationForm(): AForm()
 {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-ShruberryCreationForm::ShruberryCreationForm(const std::string &target)
+ShruberryCreationForm::ShruberryCreationForm(const std::string &target, std::string const & _name, int _signGrade, int _execGrade): AForm(_name, _signGrade, _execGrade)
 {
+	_target = target;
 	std::cout << getName() << " default constructor called" << std::endl;
 }
 
@@ -22,7 +23,12 @@ ShruberryCreationForm &ShruberryCreationForm::operator=(const ShruberryCreationF
 	return (*this);
 }
 
-void	ShruberryCreationForm::execute(Bureaucrat const & executor)
+std::string	ShruberryCreationForm::getTarget() const
+{
+	return (_target);
+}
+
+void	ShruberryCreationForm::execute(Bureaucrat const & executor) const
 {
 	if (!getSigned())
 	{
