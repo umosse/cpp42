@@ -47,15 +47,15 @@ void	ShruberryCreationForm::execute(Bureaucrat const & executor) const
 		std::cerr << "File was not opened correctly\n";
 	else
 	{
-		std::string tree ="        _-_"
-						"		/~~   ~~\\"
-						"	 /~~         ~~"
-						"	{               }"
-						"	 \\  _-     -_  /"
-						"	   ~  \\ //  ~"
-						"	_- -   | | _- _"
-						"	  _ -  | |   -_"
-						"		  // \\";
+		std::string tree ="           _-_\n"
+						"		/~~   ~~\\\n"
+						"	 /~~         ~~\\\n"
+						"	{               }\n"
+						"	 \\  _-     -_  /\n"
+						"	   ~  \\\\ //  ~\n"
+						"	_- -   | | _- _\n"
+						"	  _ -  | |   -_\n"
+						"		  // \\\\\n";
 		newFile << tree << "\n";
 	}
 }
