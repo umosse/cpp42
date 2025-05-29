@@ -6,7 +6,6 @@
 #include <cstdlib>
 #include <ctime>
 #include <exception>
-#include <typeinfo>
 
 Base	*generate(void)
 {
