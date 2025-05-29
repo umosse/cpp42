@@ -96,7 +96,7 @@ void	AForm::beSigned(Bureaucrat &bureaucrat)
 	}
 	else
 	{
-		GradeTooLowException	Low(bureaucrat.getName() + " couldn't sign " + _name + " because the bureacrat's grade was too low.");
+		GradeTooLowException	Low(bureaucrat.getName() + " couldn't sign " + _name + " because the bureaucrat's grade was too low.");
 		throw (Low);
 	}
 }

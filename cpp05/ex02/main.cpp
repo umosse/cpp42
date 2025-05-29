@@ -25,14 +25,13 @@ int	main()
 		}
 		delete form;
 		std::cout << "END\n\n\n";
-		/////////////////////////////////////////////////////////////
 	}
 
 	{
-		AForm*	form2 = new ShruberryCreationForm();
+		AForm*	form2 = new ShruberryCreationForm("target", "name", 150, 150);
 		try
 		{
-			Bureaucrat	bureaucrat("b2", 110);
+			Bureaucrat	bureaucrat("b2", 1);
 			std::cout << bureaucrat << "\n";
 			std::cout << *form2 << "\n";
 			form2->beSigned(bureaucrat);
@@ -44,7 +43,6 @@ int	main()
 		}
 		delete form2;
 		std::cout << "END\n\n\n";
-		/////////////////////////////////////////////////////////////
 	}
 
 	{
@@ -65,4 +63,76 @@ int	main()
 		std::cout << "END\n\n\n";
 	}
 
+	{
+		AForm*	form4 = new PresidentialPardonForm();
+		try
+		{
+			Bureaucrat	bureaucrat("b3", 150);
+			std::cout << bureaucrat << "\n";
+			std::cout << *form4 << "\n";
+			form4->beSigned(bureaucrat);
+			bureaucrat.executeForm(*form4);
+		}
+		catch (const std::exception &ex)
+		{
+			std::cerr << ex.what() << "\n";
+		}
+		delete form4;
+		std::cout << "END\n\n\n";
+	}
+
+	{
+		AForm*	form5 = new ShruberryCreationForm();
+		try
+		{
+			Bureaucrat	bureaucrat("b3", 150);
+			std::cout << bureaucrat << "\n";
+			std::cout << *form5 << "\n";
+			form5->beSigned(bureaucrat);
+			bureaucrat.executeForm(*form5);
+		}
+		catch (const std::exception &ex)
+		{
+			std::cerr << ex.what() << "\n";
+		}
+		delete form5;
+		std::cout << "END\n\n\n";
+	}
+
+	{
+		AForm*	form6 = new RobotomyRequestForm();
+		try
+		{
+			Bureaucrat	bureaucrat("b3", 150);
+			std::cout << bureaucrat << "\n";
+			std::cout << *form6 << "\n";
+			form6->beSigned(bureaucrat);
+			bureaucrat.executeForm(*form6);
+		}
+		catch (const std::exception &ex)
+		{
+			std::cerr << ex.what() << "\n";
+		}
+		delete form6;
+		std::cout << "END\n\n\n";
+	}
+
+
+	{
+		AForm*	form7 = new PresidentialPardonForm("target", "name", 100, 100);
+		try
+		{
+			Bureaucrat	bureaucrat("b3", 150);
+			std::cout << bureaucrat << "\n";
+			std::cout << *form7 << "\n";
+			form7->beSigned(bureaucrat);
+			bureaucrat.executeForm(*form7);
+		}
+		catch (const std::exception &ex)
+		{
+			std::cerr << ex.what() << "\n";
+		}
+		delete form7;
+		std::cout << "END\n\n\n";
+	}
 }
