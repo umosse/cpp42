@@ -1,5 +1,5 @@
 CXX = c++
-NAME = Iter
+NAME = Array
 SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 CXXFLAGS = -Wall -Werror -Wextra -g3 -std=c++98
