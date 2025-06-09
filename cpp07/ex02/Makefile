@@ -1,5 +1,5 @@
 CXX = c++
-NAME = Array
+NAME = Arraying
 SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 CXXFLAGS = -Wall -Werror -Wextra -g3 -std=c++98
@@ -18,4 +18,4 @@ fclean : clean
 
 re: fclean all
 
-.PHONY : all clean fclean re
+.PHONY : all clean fclean re Arraying
