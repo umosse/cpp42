@@ -7,7 +7,7 @@ RobotomyRequestForm::RobotomyRequestForm(): AForm()
 	std::cout << "Default constructor called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string &target, std::string const & _name, int _signGrade, int _execGrade): AForm(_name, _signGrade, _execGrade)
+RobotomyRequestForm::RobotomyRequestForm(const std::string &target): AForm("RobotomyRequestForm", 72, 45)
 {
 	_target = target;
 	std::cout << getName() << " default constructor called" << std::endl;
@@ -17,7 +17,7 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &o
 {
 	if (this != &other)
 	{
-		setName(other.getName());
+		AForm::operator=(other);
 	}
 	std::cout << "Assignment operator called" << std::endl;
 	return (*this);

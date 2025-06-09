@@ -6,9 +6,8 @@ Bureaucrat::Bureaucrat()
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string const & name, int grade)
+Bureaucrat::Bureaucrat(std::string const & name, int grade) : _name(name)
 {
-	_name = name;
 	_grade = grade;
 	if (_grade < 1)
 	{
@@ -27,7 +26,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 {
 	if (this != &other)
 	{
-		_name = other._name;
+		_grade = other._grade;
 	}
 	std::cout << "Assignment operator called" << std::endl;
 	return (*this);

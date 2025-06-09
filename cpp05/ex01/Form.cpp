@@ -1,16 +1,13 @@
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 
-Form::Form()
+Form::Form() : _name("Default"), _signed(false), _signGrade(150), _execGrade(150)
 {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Form::Form(std::string const & name, int signGrade, int execGrade): _signed(false)
+Form::Form(std::string const & name, int signGrade, int execGrade): _name(name), _signed(false), _signGrade(signGrade), _execGrade(execGrade)
 {
-	_name = name;
-	_signGrade = signGrade;
-	_execGrade = execGrade;
 	if (_signGrade < 1 || _execGrade < 1)
 	{
 		GradeTooLowException	Low;
@@ -28,7 +25,7 @@ Form &Form::operator=(const Form &other)
 {
 	if (this != &other)
 	{
-		_name = other._name;
+		_signed = other._signed;
 	}
 	std::cout << "Assignment operator called" << std::endl;
 	return (*this);

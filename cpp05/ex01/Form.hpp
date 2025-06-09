@@ -33,10 +33,10 @@ class Form {
 				std::string	_message;
 		};
 		private:
-		std::string	_name;
+		const std::string	_name;
 		bool		_signed;
-		int			_signGrade;
-		int			_execGrade;
+		const int			_signGrade;
+		const int			_execGrade;
 	};
 	
 std::ostream &operator<<(std::ostream &oss, const Form &form);

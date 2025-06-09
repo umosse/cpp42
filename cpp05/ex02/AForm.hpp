@@ -14,7 +14,6 @@ class AForm {
 		virtual ~AForm();
 		std::string	const	&getName()const;
 		bool	getSigned() const;
-		void	setName(const std::string &name);
 		int	getSignGrade() const;
 		int	getExecGrade() const;
 		void	beSigned(Bureaucrat& bureaucrat);
@@ -40,10 +39,10 @@ class AForm {
 			virtual const char * what() const throw();
 		};
 		private:
-		std::string	_name;
+		const std::string	_name;
 		bool		_signed;
-		int			_signGrade;
-		int			_execGrade;
+		const int			_signGrade;
+		const int			_execGrade;
 	};
 
 std::ostream &operator<<(std::ostream &oss, const AForm &form);

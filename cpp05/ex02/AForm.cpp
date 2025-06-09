@@ -6,11 +6,8 @@ AForm::AForm(): _name("default"), _signed(false), _signGrade(150), _execGrade(15
 	std::cout << "Default constructor called" << std::endl;
 }
 
-AForm::AForm(std::string const & name, int signGrade, int execGrade): _signed(false)
+AForm::AForm(std::string const & name, int signGrade, int execGrade): _name(name), _signed(false), _signGrade(signGrade), _execGrade(execGrade)
 {
-	_name = name;
-	_signGrade = signGrade;
-	_execGrade = execGrade;
 	if (_signGrade < 1 || _execGrade < 1)
 	{
 		GradeTooLowException	Low;
@@ -28,7 +25,7 @@ AForm &AForm::operator=(const AForm &other)
 {
 	if (this != &other)
 	{
-		_name = other._name;
+		_signed = other._signed;
 	}
 	std::cout << "Assignment operator called" << std::endl;
 	return (*this);
@@ -43,11 +40,6 @@ std::ostream &operator<<(std::ostream &oss, const AForm &AForm)
 std::string	const &AForm::getName()const
 {
 	return (_name);
-}
-
-void	AForm::setName(const std::string &name)
-{
-	_name = name;
 }
 
 int	AForm::getSignGrade()const

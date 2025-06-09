@@ -7,7 +7,7 @@ ShruberryCreationForm::ShruberryCreationForm(): AForm()
 	std::cout << "Default constructor called" << std::endl;
 }
 
-ShruberryCreationForm::ShruberryCreationForm(const std::string &target, std::string const & _name, int _signGrade, int _execGrade): AForm(_name, _signGrade, _execGrade)
+ShruberryCreationForm::ShruberryCreationForm(const std::string &target): AForm("ShruberryCreationForm", 145, 137)
 {
 	_target = target;
 	std::cout << getName() << " default constructor called" << std::endl;
@@ -17,7 +17,7 @@ ShruberryCreationForm &ShruberryCreationForm::operator=(const ShruberryCreationF
 {
 	if (this != &other)
 	{
-		setName(other.getName());
+		AForm::operator=(other);
 	}
 	std::cout << "Assignment operator called" << std::endl;
 	return (*this);

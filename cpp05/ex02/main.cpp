@@ -28,7 +28,7 @@ int	main()
 	}
 
 	{
-		AForm*	form2 = new ShruberryCreationForm("target", "name", 150, 150);
+		AForm*	form2 = new ShruberryCreationForm("target");
 		try
 		{
 			Bureaucrat	bureaucrat("b2", 1);
@@ -119,7 +119,7 @@ int	main()
 
 
 	{
-		AForm*	form7 = new PresidentialPardonForm("target", "name", 100, 100);
+		AForm*	form7 = new PresidentialPardonForm("target");
 		try
 		{
 			Bureaucrat	bureaucrat("b3", 150);

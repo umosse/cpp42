@@ -6,7 +6,7 @@ PresidentialPardonForm::PresidentialPardonForm(): AForm()
 	std::cout << "Default constructor called" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string &target, std::string const & _name, int _signGrade, int _execGrade): AForm(_name, _signGrade, _execGrade)
+PresidentialPardonForm::PresidentialPardonForm(const std::string &target): AForm("PresidentialPardonForm", 25, 5)
 {
 	_target = target;
 	std::cout << getName() << " default constructor called" << std::endl;
@@ -16,7 +16,7 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 {
 	if (this != &other)
 	{
-		setName(other.getName());
+		AForm::operator=(other);
 	}
 	std::cout << "Assignment operator called" << std::endl;
 	return (*this);
