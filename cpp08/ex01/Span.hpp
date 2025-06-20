@@ -13,6 +13,7 @@ class Span {
 		Span& operator=(const Span &other);
 
 		void	addNumber(int i);
+		void	addManyNumbers(std::vector<int>::iterator first, std::vector<int>::iterator last);
 		unsigned int	shortestSpan();
 		unsigned int	longestSpan();
 

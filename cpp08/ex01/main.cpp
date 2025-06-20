@@ -1,5 +1,7 @@
 #include "Span.hpp"
 
+// Subject main
+
 int main()
 {
 	Span sp = Span(5);
@@ -11,4 +13,12 @@ int main()
 	std::cout << sp.shortestSpan() << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
 	return 0;
+}
+
+// Custom main
+
+int	main()
+{
+	Span sp = Span(100);
+	
 }

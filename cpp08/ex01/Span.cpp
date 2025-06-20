@@ -27,10 +27,15 @@ Span &Span::operator=(const Span &other)
 
 void	Span::addNumber(int n)
 {
-	if (_N >= _size)
+	if (_N <= _size)
 		throw std::length_error("Error : No more numbers can be added.");
 	_vect.push_back(n);
 	_size++;
+}
+
+void	Span::addManyNumbers(std::vector<int>::iterator first, std::vector<int>::iterator last)
+{
+
 }
 
 unsigned int	Span::shortestSpan()
@@ -42,8 +47,14 @@ unsigned int	Span::shortestSpan()
 	std::vector<int>::iterator last = _vect.end();
 	std::sort(first, last);
 	last--;
-	unsigned int	span = last - first;
-	
+	unsigned int	span = *last - *first;
+	for (; second != last; first++, second++)
+	{
+		unsigned int	newSpan = *second - *first;
+		if (newSpan < span)
+			span = newSpan;
+	}
+	return span;
 }
 
 unsigned int	Span::longestSpan()
@@ -54,7 +65,7 @@ unsigned int	Span::longestSpan()
 	std::vector<int>::iterator last = _vect.end();
 	std::sort(first, last);
 	last--;
-	unsigned int	span = last - first;
+	unsigned int	span = *last - *first;
 	return span;
 }
 
