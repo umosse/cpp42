@@ -8,12 +8,12 @@ Bureaucrat::Bureaucrat()
 Bureaucrat::Bureaucrat(std::string const & name, int grade) : _name(name)
 {
 	_grade = grade;
-	if (_grade < 1)
+	if (_grade > 150)
 	{
 		GradeTooLowException	Low;
 		throw (Low);
 	}
-	if (_grade > 150)
+	if (_grade < 1)
 	{
 		GradeTooHighException	High;
 		throw (High);
@@ -50,12 +50,12 @@ int	Bureaucrat::getGrade()const
 void	Bureaucrat::incrGrade()
 {
 	_grade--;
-	if (_grade < 1)
+	if (_grade > 150)
 	{
 		GradeTooLowException	Low;
 		throw (Low);
 	}
-	if (_grade > 150)
+	if (_grade < 1)
 	{
 		GradeTooHighException	High;
 		throw (High);
@@ -65,12 +65,12 @@ void	Bureaucrat::incrGrade()
 void	Bureaucrat::decrGrade()
 {
 	_grade++;
-	if (_grade < 1)
+	if (_grade > 150)
 	{
 		GradeTooLowException	Low;
 		throw (Low);
 	}
-	if (_grade > 150)
+	if (_grade < 1)
 	{
 		GradeTooHighException	High;
 		throw (High);
