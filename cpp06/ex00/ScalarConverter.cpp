@@ -1,4 +1,4 @@
-#include "ScalarCoonverter.hpp"
+#include "ScalarConverter.hpp"
 #include <cctype>
 #include <cmath>
 #include <iomanip>
