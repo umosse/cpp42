@@ -38,7 +38,7 @@ class AForm {
 			FormNotSignedException();
 			virtual const char * what() const throw();
 		};
-		private:
+	private:
 		const std::string	_name;
 		bool		_signed;
 		const int			_signGrade;

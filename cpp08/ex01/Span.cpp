@@ -1,5 +1,7 @@
 #include "Span.hpp"
 #include <algorithm>
+#include <cstddef>
+#include <iterator>
 #include <stdexcept>
 #include <vector>
 
@@ -35,7 +37,13 @@ void	Span::addNumber(int n)
 
 void	Span::addManyNumbers(std::vector<int>::iterator first, std::vector<int>::iterator last)
 {
+	size_t	howMany = std::distance(first, last);
 
+	if (howMany > _N)
+		throw std::length_error("Error : You cannot add so many numbers.");
+	std::vector<int>::iterator pos = _vect.begin();
+	_vect.insert(pos, first, last);
+	_size = std::distance(first, last);
 }
 
 unsigned int	Span::shortestSpan()
