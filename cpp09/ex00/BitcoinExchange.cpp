@@ -14,6 +14,7 @@ BitcoinExchange::BitcoinExchange()
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &other)
 {
+	(void)other;
 	std::cout << "Copy constructor called" << std::endl;
 }
 
@@ -32,12 +33,12 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
 	return (*this);
 }
 
-void	BitcoinExchange::inputParsing(std::string input)
-{
+// void	BitcoinExchange::inputParsing(std::string input)
+// {
 
-}
+// }
 
-int	check_correct_date(std::string date)
+int	BitcoinExchange::check_correct_date_db(std::string date)
 {
 	std::string	year;
 	std::string	month;
@@ -52,32 +53,34 @@ int	check_correct_date(std::string date)
 	
 	// Check month
 	std::size_t secondDash = date.find("-", firstDash + 1);
+	secondDash -= firstDash + 1;
 	if (secondDash != 2)
-		throw std::range_error("Invalid month format.\n");
-	int	intMonth = atoi(date.substr(firstDash + 1, secondDash).c_str());
+		throw std::range_error("Invalid month1 format.\n");
+	int	intMonth = std::atoi(date.substr(firstDash + 1, secondDash).c_str());
 	if (intMonth < 0 || intMonth > 12)
 		throw std::range_error("Invalid month format.\n");
 	month = date.substr(firstDash + 1, secondDash);
 
 	// Check day
-	if (date.substr(secondDash + 1).length() != 2)
-		throw std::range_error("Invalid day format.\n");
-	int	intDay = atoi(date.substr(secondDash + 1).c_str());
-	if (intDay < 1 || intDay > months[intMonth - 1])
-		throw std::range_error("Invalid day format.\n");
+	secondDash += 5;
+	if (date.substr(secondDash + 1).length() < 2)
+		throw std::range_error("Invalid day1 format.\n");
+	int	intDay = std::atoi(date.substr(secondDash + 1).c_str());
+	if (intDay < 1 || ((std::atoi(year.c_str()) % 4 == 0) && intMonth == 2 && intDay > 29))
+		throw std::range_error("Invalid day2 format.\n");
+	if (intDay > months[intMonth - 1])
+		throw std::range_error("Invalid day3 format.\n");
 	day = date.substr(secondDash + 1);
 
 	return (0);
 }
 
-int	check_correct_value(std::string value)
+int	BitcoinExchange::check_correct_value_db(std::string value)
 {
 	float	floatValue;
-	floatValue = atof(value.c_str());
-	if (floatValue < 0 || floatValue > 1000)
+	floatValue = std::atof(value.c_str());
+	if (floatValue < 0)
 		throw std::range_error("Value is outside of the allowed range. \n");
-
-	
 
 	return (0);
 }
@@ -105,15 +108,15 @@ void	BitcoinExchange::dbParsing(std::string &path)
 		// Parsing before the comma :
 
 		std::string	date = line.substr(0, comma);
-		if (check_correct_date(date))
+		if (check_correct_date_db(date))
 			throw std::logic_error("Wrong date format.\n");
 		
 		// Parsing after the comma :
 
 		std::string	value = line.substr(comma + 1);
-		if (check_correct_value(value))
+		if (check_correct_value_db(value))
 			throw std::logic_error("Wrong value format.\n");
 
-
+		_db[date] = std::atof(value.c_str());
 	}
 }
