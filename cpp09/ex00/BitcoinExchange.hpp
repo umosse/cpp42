@@ -2,12 +2,13 @@
 # define BITCOINEXCHANGE_HPP
 
 #include <iostream>
+#include <map>
 
-struct Date {
-	int	year;
-	int	month;
-	int	day;
-};
+// struct Date {
+// 	int	year;
+// 	int	month;
+// 	int	day;
+// };
 
 class BitcoinExchange{
 	public:
@@ -17,8 +18,10 @@ class BitcoinExchange{
 		BitcoinExchange& operator=(const BitcoinExchange &other);
 
 		void	inputParsing(std::string input);
-		void	dbParsing(std::string path);
+		void	dbParsing(std::string &path);
 	private:
+		std::map<std::string, float> _db;
+
 
 };
 
