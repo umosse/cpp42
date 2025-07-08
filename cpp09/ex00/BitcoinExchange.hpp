@@ -17,7 +17,7 @@ class BitcoinExchange{
 		~BitcoinExchange();
 		BitcoinExchange& operator=(const BitcoinExchange &other);
 
-		void	inputParsing(std::string input);
+		void	inputParsing(std::string &input);
 		int		check_correct_date_db(std::string date);
 		int		check_correct_value_db(std::string value);
 		void	dbParsing(std::string &path);
