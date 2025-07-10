@@ -3,7 +3,11 @@
 #include <cstddef>
 #include <cstdlib>
 #include <fstream>
+#include <iomanip>
+#include <ios>
 #include <iterator>
+#include <map>
+#include <sstream>
 #include <stdexcept>
 #include <string>
 #include <cctype>
@@ -34,7 +38,34 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
 	return (*this);
 }
 
-int	check_correct_date_input(std::string date)
+void	BitcoinExchange::compare_dates(std::string date, Date *dates)
+{
+	(void)date;
+	std::map<std::string, float>::iterator it;
+	for (int y = dates->year; y > 0; y--)
+	{
+		for (int m = (y == dates->year ? dates->month : 12); m > 0; m--)
+		{
+			for (int d = (y == dates->year && m == dates->month ? dates->day : 31); d > 0; d--)
+			{
+				std::stringstream	currentDate;
+				currentDate << y << "-" << std::setw(2) << std::setfill('0') << m << "-" << std::setw(2) << d;
+				// std::cout << currentDate.str() << "\n";
+				it = _db.find(currentDate.str());
+				if (it != _db.end())
+				{
+					std::stringstream	ss;
+					ss << std::fixed << std::setprecision(2) << it->second * dates->value;
+					std::cout << currentDate.str() << " => " << dates->value << " = " << ss.str() << "\n";
+					return ;
+				}
+			}
+		}
+	}
+	std::cout << "Error : date is impossible to find.\n";
+}
+
+int	check_correct_date_input(std::string date, Date *dates)
 {
 	std::string	year;
 	std::string	month;
@@ -83,12 +114,27 @@ int	check_correct_date_input(std::string date)
 	}
 	day = date.substr(secondDash + 1);
 
+	dates->day = std::atol(day.c_str());
+	dates->month = std::atol(month.c_str());
+	dates->year = std::atol(year.c_str());
+
 	return (0);
 }
 
-int	check_correct_value_input(std::string value)
+int	check_correct_value_input(std::string value, Date *dates)
 {
 	float	floatValue;
+	for (std::size_t i = 0; i < value.length(); i++)
+	{
+		if (!std::isdigit(value[i]))
+		{
+			if (value[i] != '.')
+			{
+				std::cout << "Value is not a number\n";
+				return (1);
+			}
+		}
+	}
 	floatValue = std::atof(value.c_str());
 	if (floatValue < 0)
 	{
@@ -100,10 +146,11 @@ int	check_correct_value_input(std::string value)
 		std::cout << "Value is over 1000\n";
 		return (1);
 	}
+	dates->value = floatValue;
 	return (0);
 }
 
-void	BitcoinExchange::inputParsing(std::string &input)
+void	BitcoinExchange::inputParsing(std::string &input, Date *dates)
 {
 	std::ifstream	inputFile;
 	std::string		line;
@@ -111,38 +158,58 @@ void	BitcoinExchange::inputParsing(std::string &input)
 	inputFile.open(input.c_str());
 	if (!inputFile.is_open())
 	{
-		throw std::logic_error("Failed to open the inputFile.\n");
+		throw std::logic_error("Failed to open the inputFile (1).\n");
 	}
 	while (std::getline(inputFile, line))
 	{
 		if (line == "date | value")
 			continue;
 
+		bool	digit = 0;
 		for (size_t i = 0; i < line.length(); i++)
 		{
-			if (!std::isdigit(line[i]) && line[i] != '|' && line[i] != ' ' && line[i] != '.')
-				std::cout << "Invalid format in input file.\n";
+			if (digit == 1)
+				continue;
+			if (!std::isdigit(line[i]))
+			{
+				if (line[i] != '|' && line[i] != ' ' && line[i] != '.' && line[i] != '-')
+				{
+					std::cout << "Invalid format in input file (2).\n";
+					digit = 1;
+				}
+			}
 		}
+		if (digit == 1)
+			continue;
 
 		std::size_t	pipe = line.find("|");
 		
 		if (pipe < 1)
-			std::cout << "Invalid date in input file.\n";
+		{
+			std::cout << "Invalid date in input file (3).\n";
+			continue;
+		}
 
+		if (line[pipe - 1] != ' ' || line[pipe + 1] != ' ')
+		{
+			std::cout << "Invalid date in input file (4).\n";
+			continue;
+		}
 		// Parsing before the pipe :
 
-		std::string	date = line.substr(0, pipe + 1);
-		if (check_correct_date_input(date))
+		std::string	date = line.substr(0, pipe - 1);
+		if (check_correct_date_input(date, dates))
 			continue;
 		
 		// Parsing after the pipe :
 
 		std::string	value = line.substr(pipe + 2);
-		if (check_correct_value_input(value))
+		if (check_correct_value_input(value, dates))
 			continue;
 
+		compare_dates(date, dates);
 
-		_db[date] = std::atof(value.c_str());
+		_ipt[date] = std::atof(value.c_str());
 	}
 }
 
@@ -187,6 +254,17 @@ int	BitcoinExchange::check_correct_value_db(std::string value)
 {
 	float	floatValue;
 	floatValue = std::atof(value.c_str());
+	for (std::size_t i = 0; i < value.length(); i++)
+	{
+		if (!std::isdigit(value[i]))
+		{
+			if (value[i] != '.')
+			{
+				std::cout << "Value is not a number\n";
+				return (1);
+			}
+		}
+	}
 	if (floatValue < 0)
 		throw std::range_error("Value is outside of the allowed range. \n");
 
