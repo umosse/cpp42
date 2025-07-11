@@ -32,7 +32,8 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
 {
 	if (this != &other)
 	{
-		
+		_db = other._db;
+		_ipt = other._ipt;
 	}
 	std::cout << "Assignment operator called" << std::endl;
 	return (*this);
@@ -80,6 +81,14 @@ int	check_correct_date_input(std::string date, Date *dates)
 		return (1);
 	}
 	year = date.substr(0, firstDash);
+	for (std::size_t i = 0; i < year.length(); i++)
+	{
+		if (!std::isdigit(year[i]))
+		{
+			std::cout << "Invalid year format.\n";
+			return (1);
+		}
+	}
 	
 	// Check month
 	std::size_t secondDash = date.find("-", firstDash + 1);
@@ -113,6 +122,11 @@ int	check_correct_date_input(std::string date, Date *dates)
 		return (1);
 	}
 	day = date.substr(secondDash + 1);
+	if (day.length() != 2)
+	{
+		std::cout << "Invalid day4 format.\n";
+		return (1);
+	}
 
 	dates->day = std::atol(day.c_str());
 	dates->month = std::atol(month.c_str());
@@ -225,6 +239,11 @@ int	BitcoinExchange::check_correct_date_db(std::string date)
 	if (firstDash == 0)
 		throw std::range_error("Invalid year format.\n");
 	year = date.substr(0, firstDash);
+	for (std::size_t i = 0; i < year.length(); i++)
+	{
+		if (!std::isdigit(year[i]))
+			throw std::range_error("Invalid year format.\n");
+	}
 	
 	// Check month
 	std::size_t secondDash = date.find("-", firstDash + 1);
@@ -246,6 +265,8 @@ int	BitcoinExchange::check_correct_date_db(std::string date)
 	if (intDay > months[intMonth - 1])
 		throw std::range_error("Invalid day3 format.\n");
 	day = date.substr(secondDash + 1);
+	if (day.length() != 2)
+		throw std::range_error("Invalid day4 format.\n");
 
 	return (0);
 }

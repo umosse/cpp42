@@ -23,9 +23,9 @@ class BitcoinExchange{
 		int		check_correct_value_db(std::string value);
 		void	dbParsing(std::string &path);
 		void	compare_dates(std::string date, Date *dates);
+	private:
 		std::map<std::string, float> _db;
 		std::map<std::string, float> _ipt;
-	private:
 
 
 };
