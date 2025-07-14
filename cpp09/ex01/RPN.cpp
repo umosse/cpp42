@@ -21,17 +21,17 @@ RPN &RPN::operator=(const RPN &other)
 {
 	if (this != &other)
 	{
-		
+		_operands = other._operands;
 	}
 	std::cout << "Assignment operator called" << std::endl;
 	return (*this);
 }
 
-int	RPN::calculate(std::string str)
+double	RPN::calculate(std::string str)
 {
-	int	result = 0;
-	int	firstNb = 0;
-	int	secondNb = 0;
+	double	result = 0;
+	double	firstNb = 0;
+	double	secondNb = 0;
 
 	for (std::size_t i = 0; i < str.length(); i++)
 	{

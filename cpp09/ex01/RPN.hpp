@@ -14,9 +14,9 @@ class RPN{
 		RPN& operator=(const RPN &other);
 
 		int	inputParsing(std::string str);
-		int	calculate(std::string str);
+		double	calculate(std::string str);
 	private:
-		std::stack<int>	_operands;
+		std::stack<double>	_operands;
 };
 
 #endif
