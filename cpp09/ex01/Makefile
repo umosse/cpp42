@@ -1,6 +1,6 @@
 CXX = c++
-NAME = btc
-SRCS = main.cpp BitcoinExchange.cpp
+NAME = RPN
+SRCS = main.cpp RPN.cpp
 OBJS = $(SRCS:.cpp=.o)
 CXXFLAGS = -Wall -Werror -Wextra -g3 -std=c++98
 RM = rm -f
