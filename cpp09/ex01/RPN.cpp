@@ -78,7 +78,6 @@ double	RPN::calculate(std::string str)
 			result = firstNb / secondNb;
 			_operands.push(result);
 		}
-		// std::cout << result << "\n";
 	}
 	return (result);
 }

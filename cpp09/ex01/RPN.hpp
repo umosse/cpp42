@@ -2,7 +2,6 @@
 # define RPN_HPP
 
 #include <iostream>
-#include <map>
 #include <stack>
 #include <cstdlib>
 
