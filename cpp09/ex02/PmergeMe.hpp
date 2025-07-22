@@ -12,9 +12,9 @@ class PmergeMe{
 		PmergeMe& operator=(const PmergeMe &other);
 
 		bool	inputParsing(std::string input);
-		int		sort();
-	private:
+		int		sort(size_t multi);
 		std::vector<double>_vec;
+	private:
 };
 
 #endif

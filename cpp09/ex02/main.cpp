@@ -1,5 +1,6 @@
 #include "PmergeMe.hpp"
 #include <cstddef>
+#include <iterator>
 
 int	main(int argc, char **argv)
 {
@@ -15,7 +16,9 @@ int	main(int argc, char **argv)
 	std::cout << str << "\n";
 	if (!merge.inputParsing(str))
 		return 1;
-	merge.sort();
+	
+	std::size_t	multi = 1;
+	merge.sort(multi);
 
 	return 0;
 }
