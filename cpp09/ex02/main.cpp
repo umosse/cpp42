@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 		return 1;
 	
 	std::size_t	multi = 1;
-	merge.sort(multi);
+	multi = merge.sort(multi);
 
 	return 0;
 }

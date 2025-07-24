@@ -4,6 +4,7 @@
 #include <iterator>
 #include <cstdlib>
 #include <utility>
+#include <vector>
 
 PmergeMe::PmergeMe()
 {
@@ -31,15 +32,44 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &other)
 	return (*this);
 }
 
+int	PmergeMe::pending()
+{
+	std::vector<int>	_pendVec;
+
+	for (int i = 0; i < _vec.size(); i += multi)
+	{
+		
+	}
+}
+
+int	PmergeMe::jacobsthal(size_t input)
+{
+	int	current = 1;
+	int	previous = 0;
+
+	if (input == 0)
+		return 0;
+	if (input == 1)
+		return 1;
+	for (std::size_t i = 0; i < input; i++)
+	{
+		current = current + (previous * 2);
+		previous = current;
+	}
+	std::cout << current << "\n";
+	return current;
+}
+
 int	PmergeMe::sort(size_t multi)
 {
 	bool	odd = false;
+	std::size_t finalMulti = multi;
 
 	if (_vec.size() % 2 == 1)
 		odd = true;
 	std::size_t	goodSize = _vec.size() - (_vec.size() % (multi * 2));
-	// std::cout << "goodSize = " << goodSize << "\n";
-	// std::cout << "multi = " << multi << "\n";
+	std::cout << "goodSize = " << goodSize << "\n";
+	std::cout << "multi = " << multi << "\n";
 	for (std::size_t i = 0; i < (goodSize) / 2; i += multi)
 	{
 		int	algo = multi - 1 + (i * 2);
@@ -77,8 +107,8 @@ int	PmergeMe::sort(size_t multi)
 	// multi = 4, i = 12; _vec[4 - 1 + (12 * 2)] = _vec[27] > _vec[31] -> 
 
 	if (multi <= _vec.size() / 2)
-		sort(multi * 2);
-	return 0;
+		finalMulti = sort(multi * 2);
+	return finalMulti;
 }
 
 bool	PmergeMe::inputParsing(std::string input)

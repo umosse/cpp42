@@ -1,6 +1,7 @@
 #ifndef PMERGEME_HPP
 # define PMERGEME_HPP
 
+#include <cstddef>
 #include <iostream>
 #include <vector>
 
@@ -13,8 +14,11 @@ class PmergeMe{
 
 		bool	inputParsing(std::string input);
 		int		sort(size_t multi);
-		std::vector<double>_vec;
+		int		jacobsthal(size_t multi);
+		int		pending();
+
 	private:
+		std::vector<double>_vec;
 };
 
 #endif
