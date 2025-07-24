@@ -32,13 +32,17 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &other)
 	return (*this);
 }
 
-int	PmergeMe::pending()
+int	PmergeMe::pending(std::size_t multi)
 {
 	std::vector<int>	_pendVec;
 
+	if (multi < 1)
+		return 0;
+	if (multi * 3 > _vec.size())
+		pending(multi / 2);
 	for (int i = 0; i < _vec.size(); i += multi)
 	{
-		
+		if ()
 	}
 }
 
@@ -108,6 +112,7 @@ int	PmergeMe::sort(size_t multi)
 
 	if (multi <= _vec.size() / 2)
 		finalMulti = sort(multi * 2);
+	_multi = finalMulti;
 	return finalMulti;
 }
 

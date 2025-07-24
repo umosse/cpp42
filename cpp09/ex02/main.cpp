@@ -19,6 +19,7 @@ int	main(int argc, char **argv)
 	
 	std::size_t	multi = 1;
 	multi = merge.sort(multi);
+	merge.pending(multi);
 
 	return 0;
 }
