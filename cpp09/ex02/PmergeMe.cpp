@@ -1,4 +1,5 @@
 #include "PmergeMe.hpp"
+#include <algorithm>
 #include <cctype>
 #include <cstddef>
 #include <iterator>
@@ -32,14 +33,65 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &other)
 	return (*this);
 }
 
-int	PmergeMe::pending()
+int	PmergeMe::reverse(std::size_t multi)
 {
+	std::vector<int>	_mainVec;
 	std::vector<int>	_pendVec;
+	int	groups = 0;
 
-	for (int i = 0; i < _vec.size(); i += multi)
+
+	// Making groups in pend and main
+	for (std::size_t i = 0; i < _vec.size(); i += multi)
 	{
-		
+		if ((_vec.size() - i) <= multi)
+		{
+			int j = i;
+			for (std::size_t k = 0; k < _vec.size() - i; k++)
+			{
+				_mainVec.push_back(_vec[j]);
+				j++;
+			}
+			continue ;
+		}
+		if (groups % 2 == 0 && groups != 0)
+		{
+			int j = i;
+			for (std::size_t k = 0; k < multi; k++)
+			{
+				_pendVec.push_back(_vec[j]);
+				j++;
+			}
+		}
+		else
+		{
+			int j = i;
+			for (std::size_t k = 0; k < multi; k++)
+			{
+				_mainVec.push_back(_vec[j]);
+				j++;
+			}
+		}
+		groups++;
 	}
+
+	std::cout << "multi = " << multi << "\n";
+	for (std::size_t i = 0; i < _pendVec.size(); i++)
+	{
+		std::cout << _pendVec[i] << " ";
+	}
+	std::cout << "\n";
+	for (std::size_t i = 0; i < _mainVec.size(); i++)
+	{
+		std::cout << _mainVec[i] << " ";
+	}
+	std::cout << "\n";
+
+	
+
+	if (multi == 1)
+		return 1;
+	reverse(multi / 2);
+	return 0;
 }
 
 int	PmergeMe::jacobsthal(size_t input)
@@ -68,8 +120,8 @@ int	PmergeMe::sort(size_t multi)
 	if (_vec.size() % 2 == 1)
 		odd = true;
 	std::size_t	goodSize = _vec.size() - (_vec.size() % (multi * 2));
-	std::cout << "goodSize = " << goodSize << "\n";
-	std::cout << "multi = " << multi << "\n";
+	// std::cout << "goodSize = " << goodSize << "\n";
+	// std::cout << "multi = " << multi << "\n";
 	for (std::size_t i = 0; i < (goodSize) / 2; i += multi)
 	{
 		int	algo = multi - 1 + (i * 2);

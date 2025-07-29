@@ -13,9 +13,9 @@ class PmergeMe{
 		PmergeMe& operator=(const PmergeMe &other);
 
 		bool	inputParsing(std::string input);
-		int		sort(size_t multi);
-		int		jacobsthal(size_t multi);
-		int		pending();
+		int		sort(std::size_t multi);
+		int		jacobsthal(std::size_t multi);
+		int		reverse(std::size_t multi);
 
 	private:
 		std::vector<double>_vec;
