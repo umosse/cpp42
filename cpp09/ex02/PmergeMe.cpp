@@ -86,7 +86,14 @@ int	PmergeMe::reverse(std::size_t multi)
 	}
 	std::cout << "\n";
 
-	
+	std::cout << "---------------This is for the jacobstahl------------------\n";
+	std::size_t	input = 1;
+	while (jacobsthal(input) < _pendVec.size())
+	{
+		input++;
+		std::cout << jacobsthal(input - 1) << "\n";
+		// std::cout << input << " input\n";
+	}
 
 	if (multi == 1)
 		return 1;
@@ -94,7 +101,25 @@ int	PmergeMe::reverse(std::size_t multi)
 	return 0;
 }
 
-int	PmergeMe::jacobsthal(size_t input)
+std::size_t	PmergeMe::BinarySearch(int start, int end, int input, int multi)
+{
+	(void)start;
+	(void)end;
+	(void)input;
+	(void)multi;
+	//making pairs
+
+	for (std::size_t i = 0; i < _vec.size() - 1; i += 2)
+	{
+		_pairVec.push_back(std::make_pair(_vec[i], _vec[i + 1]));
+	}
+	for (std::size_t i = 0; i < _pairVec.size(); ++i) {
+		std::cout << "(" << _pairVec[i].first << ", " << _pairVec[i].second << ")\n";
+	}
+	return 1;
+}
+
+std::size_t	PmergeMe::jacobsthal(size_t input)
 {
 	int	current = 1;
 	int	previous = 0;
@@ -106,9 +131,9 @@ int	PmergeMe::jacobsthal(size_t input)
 	for (std::size_t i = 0; i < input; i++)
 	{
 		current = current + (previous * 2);
-		previous = current;
+		previous = current - (previous * 2);
 	}
-	std::cout << current << "\n";
+	// std::cout << current << "\n";
 	return current;
 }
 

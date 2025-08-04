@@ -1,6 +1,7 @@
 #include "PmergeMe.hpp"
 #include <cstddef>
 #include <iterator>
+#include <optional>
 
 int	main(int argc, char **argv)
 {
@@ -19,7 +20,8 @@ int	main(int argc, char **argv)
 	
 	std::size_t	multi = 1;
 	multi = merge.sort(multi);
-	merge.reverse(multi);
+	// merge.reverse(multi);
+	merge.BinarySearch(1, 1, 1, 1);
 
 	return 0;
 }
