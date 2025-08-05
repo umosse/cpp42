@@ -88,11 +88,43 @@ int	PmergeMe::reverse(std::size_t multi)
 
 	std::cout << "---------------This is for the jacobstahl------------------\n";
 	std::size_t	input = 1;
-	while (jacobsthal(input) < _pendVec.size())
+	std::vector<int>	_jacobstahlVec;
+
+	while (jacobsthal(input) < (_pendVec.size() / multi))
 	{
-		input++;
-		std::cout << jacobsthal(input - 1) << "\n";
+		input ++;
+		// std::cout << jacobsthal(input - 1) << "\n";
+		_jacobstahlVec.push_back(jacobsthal(input - 1));
 		// std::cout << input << " input\n";
+	}
+	std::cout << "------------------------------\n";
+	for (std::size_t i = 0; i < _jacobstahlVec.size(); i++)
+	{
+		std::cout << _jacobstahlVec[i] << " ";
+	}
+	std::cout << "\n";
+
+	if (!_pendVec.empty())
+	{
+		std::vector<int>	_binaryMainVec;
+		for (std::size_t i = multi - 1; i < _mainVec.size(); i += multi)
+		{
+			_binaryMainVec.push_back(_mainVec[i]);
+			std::cout << _mainVec[i] << " <- MAIN VECTOR\n";
+		}
+		std::vector<int>	_binaryPendVec;
+		for (std::size_t i = multi - 1; i < _pendVec.size(); i += multi)
+		{
+			_binaryPendVec.push_back(_pendVec[i]);
+			std::cout << _pendVec[i] << " <- PEND VECTOR\n";
+		}
+		for (std::size_t i = _jacobstahlVec.size() - 1; i >= 0; i--)
+		{
+			int	pos = _jacobstahlVec[i];
+			while (pos > _binaryPendVec.size())
+				pos--;
+			
+		}
 	}
 
 	if (multi == 1)
@@ -134,16 +166,18 @@ std::size_t	PmergeMe::jacobsthal(size_t input)
 		previous = current - (previous * 2);
 	}
 	// std::cout << current << "\n";
-	return current;
+	if (current >= 3)
+		return current;
+	return 2;
 }
 
 int	PmergeMe::sort(size_t multi)
 {
-	bool	odd = false;
+	// bool	odd = false;
 	std::size_t finalMulti = multi;
 
-	if (_vec.size() % 2 == 1)
-		odd = true;
+	// if (_vec.size() % 2 == 1)
+	// 	odd = true;
 	std::size_t	goodSize = _vec.size() - (_vec.size() % (multi * 2));
 	// std::cout << "goodSize = " << goodSize << "\n";
 	// std::cout << "multi = " << multi << "\n";

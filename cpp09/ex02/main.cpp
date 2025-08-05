@@ -20,8 +20,8 @@ int	main(int argc, char **argv)
 	
 	std::size_t	multi = 1;
 	multi = merge.sort(multi);
-	// merge.reverse(multi);
-	merge.BinarySearch(1, 1, 1, 1);
+	merge.reverse(multi);
+	// merge.BinarySearch(1, 1, 1, 1);
 
 	return 0;
 }
