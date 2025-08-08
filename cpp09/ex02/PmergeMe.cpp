@@ -118,13 +118,24 @@ int	PmergeMe::reverse(std::size_t multi)
 			_binaryPendVec.push_back(_pendVec[i]);
 			std::cout << _pendVec[i] << " <- PEND VECTOR\n";
 		}
-		for (std::size_t i = _jacobstahlVec.size() - 1; i >= 0; i--)
+		std::cout << "------------------------------TRYING----------------------------------\n";
+		int	lastJacob = -1;
+		for (std::size_t i = 0; i < _jacobstahlVec.size(); i++)
 		{
 			int	pos = _jacobstahlVec[i];
-			while (pos > _binaryPendVec.size())
+			while (pos > lastJacob)
+			{
+				std::vector<int>::iterator it = std::lower_bound(_binaryMainVec.begin(), _binaryMainVec.end(), _binaryPendVec[pos]);
+				_binaryMainVec.insert(it, _binaryPendVec[pos]);
 				pos--;
-			
+			}
+			lastJacob = _jacobstahlVec[i];
 		}
+		for (std::size_t i = 0; i < _binaryMainVec.size(); i++)
+		{
+			std::cout << _binaryMainVec[i] << " ";
+		}
+		std::cout << "\n";
 	}
 
 	if (multi == 1)
